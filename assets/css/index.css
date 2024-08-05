@@ -8,7 +8,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* Center content vertically */
+    justify-content: center;
     height: 100vh;
     margin: 0;
 }
@@ -67,14 +67,6 @@ body {
     }
 }
 
-.menu-container {
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    display: flex;
-    align-items: center;
-}
-
 .menu-toggle {
     display: flex;
     flex-direction: column;
@@ -85,90 +77,74 @@ body {
     background: transparent;
     border: none;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    position: fixed;
+    top: 10px;
+    left: 10px;
     z-index: 1001;
-    /* Ensure it's above the menu */
 }
 
 .bar {
     width: 25px;
-    /* Larger width */
-    height: 1px;
-    /* Thicker */
+    height: 2px;
     background-color: #ffffff;
     transition: all 0.3s ease;
-    position: relative;
+    position: absolute;
     border-radius: 2px;
-    /* Rounded corners for better appearance */
 }
 
 .bar:nth-child(1) {
-    top: 6px;
-    /* Position the top bar */
+    top: 12px;
 }
 
 .bar:nth-child(2) {
+    top: 19px;
     opacity: 1;
-    /* Middle bar */
 }
 
 .bar:nth-child(3) {
-    top: -6px;
-    /* Position the bottom bar */
+    top: 26px;
 }
 
 .menu-toggle.active .bar:nth-child(1) {
     transform: rotate(45deg);
-    height: 2px;
+    top: 18px;
     width: 25px;
-    /* Extended width */
-    top: 0;
 }
 
 .menu-toggle.active .bar:nth-child(2) {
     opacity: 0;
     width: 0;
-    /* Hide the middle bar */
 }
 
 .menu-toggle.active .bar:nth-child(3) {
     transform: rotate(-45deg);
-    height: 2px;
+    top: 18px;
     width: 25px;
-    /* Extended width */
-    top: 0;
 }
 
 .button-container {
     display: none;
-    /* Default is hidden */
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(0, 0, 0, 0.1); /* Same background as content */
+    border: none; /* No border by default */
     height: 40px;
-    /* Height of the menu */
     width: 0;
-    /* Start with width 0 */
-    position: absolute;
-    top: 0;
-    /* Align with the top of the toggle button */
-    left: 50px;
-    /* Positioned to the right of the toggle button */
+    position: fixed;
+    top: 10px;
+    left: 60px; /* Adjust position as needed */
     display: flex;
     flex-direction: row;
-    /* Horizontálně */
     align-items: center;
-    transition: width 0.3s ease;
+    transition: width 0.3s ease, border 0.3s ease;
     z-index: 1000;
-    /* Ensure it's below the toggle button */
     overflow: hidden;
     border-radius: 10px;
+    box-shadow: none; /* Remove shadow */
 }
 
 .button-container.active {
     display: flex;
     width: 30vw;
-    /* Width when active */
-    overflow: hidden;
-    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.603); /* Same border as content */
 }
 
 .button {
@@ -185,7 +161,6 @@ body {
     transition: all ease-in-out 0.3s;
     cursor: pointer;
     margin: 0 5px;
-    /* Spacing between buttons */
 }
 
 .button:hover {
@@ -193,8 +168,9 @@ body {
 }
 
 .icon {
-    height: 20px;
-    width: 20px;
+    height: 30px;
+    width: 30px;
+    color: #ffffff;
 }
 
 @media only screen and (max-width: 500px) {
