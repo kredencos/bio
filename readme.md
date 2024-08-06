@@ -2,7 +2,8 @@
 
 # Personal Web Template
 
-[!WARNING] THIS PROJECT IS NOT FINISHED THERE IS NOT GUIDE FOR EDITING***
+***WARNING THIS PROJECT IS NOT FINISHED THERE IS NOT GUIDE FOR EDITING***
+
 This is template for your personal web under MIT License.
 
 
