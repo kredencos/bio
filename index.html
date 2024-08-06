@@ -1,51 +1,52 @@
 <!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap">
-    <title>Kredenc | Home</title>
+    <title>Krdnc | Home</title>
     <link rel="stylesheet" type="text/css" href="./assets/css/index.css">
-    <link rel="icon" type="icon" href="./assets/images/ico.ico">
 </head>
 
 <body>
-    <!--Menu Button/Bars-->
+    <img src="./assets/images/bg.png" class="bg">
     <div class="menu-container">
         <div class="menu-toggle" id="menuToggle">
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
         </div>
-        <!--menu-->
-        <div class="button-container" id="buttonContainer">
-            <button class="button" onclick="location.href='index.html'">
-            </button>
-            <button class="button" onclick="location.href='projects.html'">
-            </button>
-            <button class="button">
-            </button>
-            <button class="button">
-            </button>
+        <div class="button-container inactive" id="buttonContainer">
+            <button class="button" onclick="location.href='index.html'">Icon 1</button>
+            <button class="button" onclick="location.href='projects.html'">Icon 2</button>
+            <button class="button">icon 3</button>
+            <button class="button">icon 4</button>
         </div>
     </div>
 
-    <!--pfp, text and socials-->
-    <div class="content">
-        <img class="pfp"
-            src="https://cdn.discordapp.com/avatars/713291351168516097/1174d270b4d1b7133f4eacc360a8e5f4?size=1024"
-            alt="Profile Picture">
-        <div class="typing-container">
-            <h1>Hello, my name is <span id="typed"></span></h1>
-        </div>
-    </div>
 
+    <div class="typing-container">
+        <h1>I'm <span id="typed"></span> 👋</h1>
+    </div>
+    <div class="flex-container">
+        <div class="content">
+            <h2>Blaze</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore.</p>
+        </div>
+        <div class="content2">
+            <h2>Sentry</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore.</p>
+        </div>
+        <img src="./assets/images/active.png" class="active-projects">
+    </div>
     <!--typing effect script-->
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             var options = {
-                strings: ["Kredencos!", "Houska?", "Kredenc."],
+                strings: ["Kredencos", "Houska", "Kredenc"],
                 typeSpeed: 80,
                 backSpeed: 50,
                 backDelay: 1500,
@@ -60,6 +61,18 @@
         document.getElementById('menuToggle').addEventListener('click', function () {
             this.classList.toggle('active');
             document.getElementById('buttonContainer').classList.toggle('active');
+            document.getElementById('buttonContainer').classList.toggle('inactive');
+        });
+
+    </script>
+    <!--ko-fi widget-->
+    <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+    <script>
+        kofiWidgetOverlay.draw('kredencos', {
+            'type': 'floating-chat',
+            'floating-chat.donateButton.text': 'Support Me',
+            'floating-chat.donateButton.background-color': 'rgba(255, 255, 255, 0.1)',
+            'floating-chat.donateButton.text-color': '#ffffff'
         });
     </script>
 </body>

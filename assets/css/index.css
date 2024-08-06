@@ -1,38 +1,82 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 
 body {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'JetBrains Mono', monospace;
     overflow: hidden;
     background-color: #121212;
     color: #ffffff;
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
-    margin: 0;
+    position: relative;
+    width: 100vw;
 }
 
-.pfp {
-    border-radius: 50%;
-    height: 120px;
-    width: 120px;
+.bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    margin-bottom: 20px;
+    filter: blur(100px);
+    z-index: -1;
 }
 
-.content {
-    background: rgba(0, 0, 0, 0.1);
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    position: relative;
+    z-index: 1;
+    /* Ensure .active is positioned correctly */
+}
+
+.content,
+.content2 {
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 15px;
     padding: 20px;
-    width: 90%;
-    max-width: 500px;
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.466);
+    width: 15vw;
     border: 1px solid rgba(255, 255, 255, 0.603);
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    position: relative;
+    z-index: 1;
+    /* Ensure content is above .active */
+    margin-bottom: 1rem;
+    /* Distance from the .active image */
+}
+
+.content::before,
+.content2::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1vw;
+    height: 3vh;
+    background: rgba(255, 255, 255, 0.1);
+    filter: blur(20px);
+    z-index: -1;
+}
+
+.active-projects {
+    height: 20rem;
+    width: 40rem;
+    position: absolute;
+    top: calc(45%);
+    /* 1rem below the content */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 0;
+    /* Ensure it is below content */
 }
 
 .typing-container {
@@ -40,6 +84,7 @@ body {
     position: relative;
     white-space: nowrap;
     overflow: hidden;
+    font-size: x-large;
 }
 
 .typing-container::after {
@@ -57,6 +102,7 @@ body {
 }
 
 @keyframes blink-caret {
+
     from,
     to {
         opacity: 0;
@@ -124,13 +170,16 @@ body {
 
 .button-container {
     display: none;
-    background-color: rgba(0, 0, 0, 0.1); /* Same background as content */
-    border: none; /* No border by default */
+    background-color: rgba(0, 0, 0, 0.1);
+    /* Same background as content */
+    border: none;
+    /* No border by default */
     height: 40px;
     width: 0;
     position: fixed;
     top: 10px;
-    left: 60px; /* Adjust position as needed */
+    left: 60px;
+    /* Adjust position as needed */
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -138,14 +187,18 @@ body {
     z-index: 1000;
     overflow: hidden;
     border-radius: 10px;
-    box-shadow: none; /* Remove shadow */
+    box-shadow: none;
+    /* Remove shadow */
 }
 
 .button-container.active {
     display: flex;
-    width: 30vw;
-    border: 1px solid rgba(255, 255, 255, 0.603); /* Same border as content */
+    width: 10vw;
+    border: 1px solid rgba(255, 255, 255, 0.692);
+    /* Same border as content */
 }
+
+
 
 .button {
     outline: 0 !important;
@@ -168,25 +221,34 @@ body {
 }
 
 .icon {
-    height: 30px;
-    width: 30px;
-    color: #ffffff;
+    height: 20px;
+    width: 20px;
 }
 
-@media only screen and (max-width: 500px) {
-    .content {
+@media only screen and (max-width: 1680px) {
+    .active-projects {
+        top: calc(55% + 1rem);
+        /* Adjusted */
+        left: 50%;
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    .flex-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .content,
+    .content2 {
+        min-width: 20rem;
         font-size: small;
         padding: 10px;
+        margin-bottom: 1rem;
+        /* Distance from .active */
     }
 
-    .button-container {
-        margin-bottom: 50vw;
-    }
-}
-
-@media only screen and (max-width: 370px) {
-    .content {
-        font-size: x-small;
-        padding: 5px;
+    .active-projects {
+        display: none;
     }
 }
