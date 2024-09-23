@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Krdnc | Home</title>
-    <link rel="stylesheet" type="text/css" href="./assets/css/index.css">
+    <title>Krdnc | Projects</title>
+    <link rel="stylesheet" type="text/css" href="./assets/css/projects.css">
 </head>
 
 <body>
@@ -23,44 +23,47 @@
             <button class="button">icon 4</button>
         </div>
     </div>
-
-
-    <div class="typing-container">
-        <h1>I'm <span id="typed"></span> &#x1F44B;</h1>
-    </div>
-    <div class="flex-container">
-        <div class="content">
-            <h2>Blaze</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore.</p>
-        </div>
-        <div class="content2">
-            <h2>Sentry</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore.</p>
-        </div>
-        <img src="./assets/images/active.png" class="active-projects">
-    </div>
+    <h1>Projects</h1>
+    <div class="repo-list" id="repo-list"></div>
     <div class="footer">
         <p>Code by <a href="https://github.com/kredencos" target="_blank">Kredencos</a><br>Design by <a
                 href="https://github.com/yymqn" target="_blank">ymqn</a><br>&copy; <a href="https://github.com/kredencos"
                 target="_blank">Kredencos</a> 2024</p>
     </div>
-    <!--typing effect script-->
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            var options = {
-                strings: ["Kredenc", "Houska", "Kredencos"],
-                typeSpeed: 80,
-                backSpeed: 50,
-                backDelay: 1500,
-                startDelay: 500,
-                loop: true
-            };
+        const username = 'kredencos';
+        const languageIconsPath = './assets/languages-icons/';
 
-            var typed = new Typed("#typed", options);
-        });
+        fetch(`https://api.github.com/users/${username}/repos`)
+            .then(response => response.json())
+            .then(repos => {
+                const repoList = document.getElementById('repo-list');
+                repos.forEach(repo => {
+                    let language = repo.language ? repo.language.toLowerCase() : 'unknown';
+
+                    if (language === 'c#') {
+                        language = 'csharp';
+                    }
+
+                    if (language === 'c++') {
+                        language = 'cpp';
+                    }
+
+                    const iconSrc = language !== 'unknown' ? `${languageIconsPath}${language}.svg` : '';
+
+                    const repoItem = document.createElement('div');
+                    repoItem.className = 'repo-item';
+                    repoItem.innerHTML = `
+                        ${iconSrc ? `<img src="${iconSrc}" alt="${language} icon">` : ''}
+                        <a>${repo.name}</a>
+                        <button onclick="location.href='${repo.html_url}'" class="view-button">GitHub</button>
+                    `;
+                    repoList.appendChild(repoItem);
+                });
+            })
+            .catch(error => {
+                console.error('error xd:', error);
+            });
 
         //menu script
         document.getElementById('menuToggle').addEventListener('click', function () {
@@ -68,9 +71,7 @@
             document.getElementById('buttonContainer').classList.toggle('active');
             document.getElementById('buttonContainer').classList.toggle('inactive');
         });
-
     </script>
-    <!--ko-fi widget-->
     <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
     <script>
         kofiWidgetOverlay.draw('kredencos', {

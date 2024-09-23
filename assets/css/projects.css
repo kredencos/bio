@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+body {
+    font-family: 'JetBrains Mono', monospace;
+    background-color: #121212;
+    color: white;
+}
+
+.bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(100px);
+    z-index: -1;
+}
+
+h1 {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 10vh;
+    margin-top: 10vh;
+    font-size: 50px;
+}
+
+.repo-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 30vh;
+    justify-items: center;
+    width: 50vw;
+    margin: 0 auto;
+}
+
+.repo-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    /* Šířka boxu */
+    height: 150px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.603);
+    border-radius: 10px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.repo-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.603);
+    background: #bbbbbb3d;
+}
+
+.repo-item img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 15px;
+}
+
+.repo-item a {
+    color: #ffffff;
+    font-weight: bold;
+    margin-bottom: 10px;
+    cursor: default;
+}
+
+.view-button {
+    margin-top: 10px;
+    padding: 8px 15px;
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.menu-toggle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1001;
+}
+
+.bar {
+    width: 25px;
+    height: 2px;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+    position: absolute;
+    border-radius: 2px;
+}
+
+.bar:nth-child(1) {
+    top: 12px;
+}
+
+.bar:nth-child(2) {
+    top: 19px;
+    opacity: 1;
+}
+
+.bar:nth-child(3) {
+    top: 26px;
+}
+
+.menu-toggle.active .bar:nth-child(1) {
+    transform: rotate(45deg);
+    top: 18px;
+    width: 25px;
+}
+
+.menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+    width: 0;
+}
+
+.menu-toggle.active .bar:nth-child(3) {
+    transform: rotate(-45deg);
+    top: 18px;
+    width: 25px;
+}
+
+.button-container {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.1);
+    /* Same background as content */
+    border: none;
+    /* No border by default */
+    height: 40px;
+    width: 0;
+    position: fixed;
+    top: 10px;
+    left: 60px;
+    /* Adjust position as needed */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    transition: width 0.3s ease, border 0.3s ease;
+    z-index: 1000;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: none;
+    /* Remove shadow */
+}
+
+.button-container.active {
+    display: flex;
+    width: 10vw;
+    border: 1px solid rgba(255, 255, 255, 0.692);
+    /* Same border as content */
+}
+
+.button {
+    outline: 0 !important;
+    border: 0 !important;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    transition: all ease-in-out 0.3s;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+.button:hover {
+    transform: translateY(-3px);
+}
+
+.icon {
+    height: 20px;
+    width: 20px;
+}
+
+.footer {
+    margin-left: 90%;
+    position: absolute;
+    top: 91vh;
+    opacity: 0.5;
+    font-size: small;
+}
+
+.footer a {
+    color: white;
+}
+
+.footer a:hover {
+    color: yellow;
+}
