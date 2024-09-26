@@ -56,7 +56,7 @@
                     repoItem.innerHTML = `
                         ${iconSrc ? `<img src="${iconSrc}" alt="${language} icon">` : ''}
                         <a>${repo.name}</a>
-<button class="btn-github">
+<button class="btn-github" onclick="window.open('${repo.html_url}', '_blank')">
   <svg
     width="20"
     height="20"
